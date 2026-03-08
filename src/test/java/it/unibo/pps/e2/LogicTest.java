@@ -70,7 +70,7 @@ public class LogicTest {
     }
 
     @Test
-    public void testKnightCanMove() {
+    public void testHit() {
         logic.hit(knightRowAtTime.get("t1"), knightColAtTime.get("t1"));
         assertTrue(logic.hasKnight(knightRowAtTime.get("t1"), knightColAtTime.get("t1")));
     }
@@ -80,12 +80,12 @@ public class LogicTest {
         assertThrows(IndexOutOfBoundsException.class, () -> logic.hit(OUT_OF_BOUND_ROW, OUT_OF_BOUND_COL));
     }
 
-    @Test
-    public void testForbiddenKnightMovement() {
-        // Tested by going directly from t0 (init pos) to t2 (final pos)
-        logic.hit(knightRowAtTime.get("t2"), knightColAtTime.get("t2"));
-        assertFalse(logic.hasKnight(knightRowAtTime.get("t2"), knightColAtTime.get("t2")));
-    }
+//    @Test
+//    public void testForbiddenKnightMovement() {
+//        // Tested by going directly from t0 (init pos) to t2 (final pos)
+//        logic.hit(knightRowAtTime.get("t2"), knightColAtTime.get("t2"));
+//        assertFalse(logic.hasKnight(knightRowAtTime.get("t2"), knightColAtTime.get("t2")));
+//    } Already done in KnightTest
 
     @Test
     public void testWinCondition() {

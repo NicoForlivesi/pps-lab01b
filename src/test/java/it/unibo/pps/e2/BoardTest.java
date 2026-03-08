@@ -11,6 +11,8 @@ public class BoardTest {
     private static final int SIZE = 5;
     private static final KnightImpl knight = new KnightImpl(4, 2);
     private static final PawnImpl pawn = new PawnImpl(1, 1);
+    private static final int KNIGHT_NEXT_ROW = 3;
+    private static final int KNIGHT_NEXT_COL = 0;
 
     private BoardImpl board;
 
@@ -22,5 +24,21 @@ public class BoardTest {
     @Test
     public void testGetSize() {
         assertEquals(SIZE, board.getSize());
+    }
+
+    @Test
+    public void testGetKnightPosition() {
+        assertEquals(board.getKnightPosition(), new Pair<>(knight.getRow(), knight.getCol()));
+    }
+
+    @Test
+    public void testGetPawnPosition() {
+        assertEquals(board.getPawnPosition(), new Pair<>(pawn.getRow(), pawn.getCol()));
+    }
+
+    @Test
+    public void testMoveKnight() {
+        board.moveKnight(KNIGHT_NEXT_ROW, KNIGHT_NEXT_COL);
+        assertEquals(board.getKnightPosition(), new Pair<>(knight.getRow(), knight.getCol()));
     }
 }

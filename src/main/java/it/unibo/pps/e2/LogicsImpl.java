@@ -16,11 +16,9 @@ public class LogicsImpl implements Logics {
     
 	@Override
 	public boolean hit(int row, int col) {
-		if (row<0 || col<0 || row >= board.getSize() || col >= board.getSize()) {
-			throw new IndexOutOfBoundsException();
-		}
+		checkBound(row, col);
         board.moveKnight(row, col);
-		return board.getKnightPosition().equals(board.getPawnPosition());
+		return winCondition();
 	}
 
 	@Override
@@ -32,4 +30,14 @@ public class LogicsImpl implements Logics {
 	public boolean hasPawn(int row, int col) {
 		return this.board.getPawnPosition().equals(new Pair<>(row,col));
 	}
+
+    private void checkBound(final int row, final int col) {
+        if (row<0 || col<0 || row >= board.getSize() || col >= board.getSize()) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private boolean winCondition() {
+        return board.getKnightPosition().equals(board.getPawnPosition());
+    }
 }

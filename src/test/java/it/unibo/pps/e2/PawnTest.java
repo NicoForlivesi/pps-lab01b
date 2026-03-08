@@ -1,24 +1,25 @@
 package it.unibo.pps.e2;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PawnTest {
+public class PawnTest extends AbstractBoardObjectTest {
 
     private static final int INITIAL_ROW = 1;
     private static final int INITIAL_COL = 1;
 
-    private PawnImpl pawn;
-
-    @BeforeEach
-    public void init() {
-        this.pawn = new PawnImpl(INITIAL_ROW, INITIAL_COL);
+    @Override
+    protected BoardObject createObject(int row, int col) {
+        return new PawnImpl(INITIAL_ROW, INITIAL_COL);
     }
 
-    @Test
-    public void testPawnInitialPos() {
-        assertTrue(pawn.isAt(INITIAL_ROW, INITIAL_COL));
+    @Override
+    protected int initialRow() {
+        return INITIAL_ROW;
+    }
+
+    @Override
+    protected int initialCol() {
+        return INITIAL_COL;
     }
 }
