@@ -45,10 +45,12 @@ public class BoardImpl implements Board {
         knight.moveTo(row, col);
     }
 
+    @Override
     public final Pair <Integer, Integer> getKnightPosition() {
         return new Pair<>(knight.getRow(), knight.getCol());
     }
 
+    @Override
     public final Pair <Integer, Integer> getPawnPosition() {
         return new Pair<>(pawn.getRow(), pawn.getCol());
     }
